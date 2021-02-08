@@ -40,7 +40,27 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 selectAlbumId: action.payload
-            }    
+            } 
+            
+        case 'album/delete/success':
+            return {
+                ...state,
+                albums: state.albums.filter(album => album.id !== action.payload)
+            }  
+            
+        case 'album/delete/start':
+            return {
+                ...state,
+                albums: state.albums.map((album) => {
+                    if(album.id === action.payload) {
+                        return {
+                            ...album,
+                            deleting: true
+                        }
+                    }
+                    return album
+                })
+            }        
 
         default:
             return state;

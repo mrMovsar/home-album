@@ -13,6 +13,26 @@ export const loadAlbums = () => {
     }
 }
 
+export const deleteAlbum = (id) => {
+    return (dispatch) => {
+        dispatch({
+            type: 'album/delete/start',
+            payload: id
+        });
+
+        fetch("https://jsonplaceholder.typicode.com/albums", {
+            method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(() => {
+            dispatch ({
+                type: 'album/delete/success',
+                payload: id
+            })
+        })
+    }
+}
+
 export const loadPhotos = () => {
     return (dispatch) => {
         dispatch({type: 'photos/load/start'});
