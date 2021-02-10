@@ -48,11 +48,12 @@ export const loadPhotos = () => {
     }
 }
 
-export const selectAlbum = (userId) => {
+export const selectAlbum = (id) => {
     return (dispatch) => {
         dispatch ({
             type: 'album/select',
-            payload: userId
+            payload: id
         })
     }
 }
+

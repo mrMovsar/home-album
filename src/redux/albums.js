@@ -1,11 +1,8 @@
 const initialState = {
     albums: [],
-    photos: [],
     selectAlbumId: null,
-    loadingAlbums: false,
-    loadingPhotos: false
+    loadingAlbums: false
 }
-
 
 export default (state = initialState, action) => {
     switch (action.type) {
@@ -22,25 +19,6 @@ export default (state = initialState, action) => {
                 albums: action.payload,
                 loadingAlbums: false
             }
-
-        case 'photos/load/start':
-            return {
-                ...state,
-                loadingPhotos: true
-            }    
-
-        case 'photos/load/success':
-            return {
-                ...state,
-                photos: action.payload,
-                loadingPhotos: false
-            }
-
-        case 'album/select':
-            return {
-                ...state,
-                selectAlbumId: action.payload
-            } 
             
         case 'album/delete/success':
             return {
@@ -60,7 +38,13 @@ export default (state = initialState, action) => {
                     }
                     return album
                 })
-            }        
+            }
+            
+        case 'album/select':
+            return {
+                ...state,
+                selectAlbumId: action.payload
+            }     
 
         default:
             return state;

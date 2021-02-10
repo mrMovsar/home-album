@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 
 function Photos() {
-  const photos = useSelector(state => state.photos);
-  const selectAlbumId = useSelector(state => state.selectAlbumId);
+  const photos = useSelector(state => state.photos.photos);
+  const selectAlbumId = useSelector(state => state.albums.selectAlbumId);
+  
   const filterPhotos = photos.filter(photo => photo.id === selectAlbumId);
 
   if(selectAlbumId===null) {
